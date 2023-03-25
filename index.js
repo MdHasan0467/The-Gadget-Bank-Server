@@ -830,7 +830,16 @@ async function run() {
 
 
 
+	//!======START <- Delete buyer info -> ======>
+	app.delete('/Buyer/:id', async (req, res) => {
+		console.log('delete buyer');
+		const id = req.params.id;
+		const query = { _id: new ObjectId(id) };
+		const result = await usersCollection.deleteOne(query);
+		res.send(result);
+	});
 
+	//!======END======>
 
 
 
