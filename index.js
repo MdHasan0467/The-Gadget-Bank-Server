@@ -530,36 +530,34 @@ async function run() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		//! To get advertise data by reverse way from database
-
-	app.get('/advertisement/categories/animation', async (req, res) => {
-		const query = {};
-		const result = await advertiseDataCollection.find(query).toArray()
-		// const count = await advertiseDataCollection.estimatedDocumentCount(query);
-		// const cursor = advertiseDataCollection.find(query);
-		// const advertise = await cursor.skip(parseInt(count) - 4).toArray();
+	//!======START <- get product By Id for Advertisement  ======>
+	app.get('/productById/:id', async (req, res) => {
+		const id = req.params.id;
+		const query = { _id: new ObjectId(id) };
+		const result = await ProductCollection.findOne(query);
 		res.send(result);
+		console.log('get',result);
 	});
+	//!======END======>
 
-	// //!======END======>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
