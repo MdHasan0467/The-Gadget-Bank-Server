@@ -413,6 +413,62 @@ async function run() {
 
 
 
+		//!======START <- get Orders List for Order page by user email ======>
+
+		app.get('/my-orders/:email', async (req, res) => {
+			const email = req.params.email;
+			const userOrders = { ordererEmail : email };
+			const result = await ordersCollection.find(userOrders).toArray();
+			res.send(result);
+		});
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//!======START <- get Orders List for Order page by user email ======>
+
+		app.get('/my-orders/:email', async (req, res) => {
+			const email = req.params.email;
+			const userOrders = { ordererEmail : email };
+			const result = await ordersCollection.find(userOrders).toArray();
+			res.send(result);
+		});
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	//!======START <- get All Buyers  ======>
 
@@ -474,15 +530,6 @@ async function run() {
 
 
 
-	//!======START <- get product By Id for Advertisement  ======>
-	app.get('/productById/:id', async (req, res) => {
-		const id = req.params.id;
-		const query = { _id: new ObjectId(id) };
-		const result = await ProductCollection.findOne(query);
-		res.send(result);
-		console.log('get',result);
-	});
-	//!======END======>
 
 
 
