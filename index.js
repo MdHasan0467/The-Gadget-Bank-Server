@@ -695,6 +695,14 @@ async function run() {
 
 
 
+		//!======START <- add a new product ======>
+		app.post('/products', async (req, res) => {
+			const product = req.body;
+			const result = await ProductCollection.insertOne(product);
+			res.send(result);
+		});
+	
+		//!TODO:======END======>
 
 
 
@@ -708,15 +716,6 @@ async function run() {
 
 
 
-	//! ======START <- post data by clicking Wish button Wish Lists Data in Mongodb  ======>
-	app.post('/wishLists', async (req, res) => {
-		// console.log('wishLists');
-		const Data = req.body;
-		const result = await wishCollection.insertOne(Data);
-		res.send(result);
-		console.log(result);
-	});
-	//!======END======>
 
 
 
