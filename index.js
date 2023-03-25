@@ -716,6 +716,15 @@ async function run() {
 
 
 
+	//! ======START <- post data by clicking Wish button Wish Lists Data in Mongodb  ======>
+	app.post('/wishLists', async (req, res) => {
+		// console.log('wishLists');
+		const Data = req.body;
+		const result = await wishCollection.insertOne(Data);
+		res.send(result);
+		console.log(result);
+	});
+	//!======END======>
 
 
 
@@ -821,16 +830,7 @@ async function run() {
 
 
 
-	//!======START <- Delete buyer info -> ======>
-	app.delete('/Buyer/:id', async (req, res) => {
-		console.log('delete buyer');
-		const id = req.params.id;
-		const query = { _id: new ObjectId(id) };
-		const result = await usersCollection.deleteOne(query);
-		res.send(result);
-	});
 
-	//!======END======>
 
 
 
