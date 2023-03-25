@@ -557,7 +557,18 @@ async function run() {
 
 
 
+		//! To get advertise data by reverse way from database
 
+		app.get('/advertisement/categories/animation', async (req, res) => {
+			const query = {};
+			const result = await advertiseDataCollection.find(query).toArray()
+			// const count = await advertiseDataCollection.estimatedDocumentCount(query);
+			// const cursor = advertiseDataCollection.find(query);
+			// const advertise = await cursor.skip(parseInt(count) - 4).toArray();
+			res.send(result);
+		});
+	
+		// //!======END======>
 
 
 
@@ -684,14 +695,6 @@ async function run() {
 
 
 
-		//!======START <- add a new product ======>
-		app.post('/products', async (req, res) => {
-			const product = req.body;
-			const result = await ProductCollection.insertOne(product);
-			res.send(result);
-		});
-	
-		//!TODO:======END======>
 
 
 
